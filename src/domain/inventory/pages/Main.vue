@@ -1,33 +1,15 @@
-<template>
-<div>
-    <table>
-        <thead>
-            <tr>
-                <td>
-                    Naam
-                </td>
-                <td>
-                    Minimum
-                </td>
-                <td>
-                    Huidig
-               </td>
-           </tr>
-        </thead>
-        <tbody>
-            <tr v-for="(item, index) in inventory" :key="index">
-                <td>{{ item.name }}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-</template>
-
 <script setup lang="ts">
-import { computed } from 'vue';
+// import { computed, ref } from 'vue';
 import { getInventoryList } from '../components/inventory-store';
+import InventoryTable from '../components/Inventory-Table.vue';
 // import { getInventoryList } from '../components/store';
 
 const inventory = getInventoryList
 
 </script>
+
+<template>
+    <div>
+        <InventoryTable :inventory />
+    </div>
+</template>

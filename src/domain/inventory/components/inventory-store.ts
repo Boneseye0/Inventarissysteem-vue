@@ -1,18 +1,26 @@
+
 import { computed, ref } from "vue";
 import type { Ref } from "vue";
 
-type Inventory = {
+export type Inventory = {
     id: number;
     name:   string;
     actualAmount:   number;
     minimumAmount:  number;
 }[];
 
-export const inventory: Inventory = ref([
+export type InventoryItem = {
+    id: number;
+    name:   string;
+    actualAmount:   number;
+    minimumAmount:  number;
+};
+
+export const inventory: Ref<Inventory> = ref([
     {
     id:             0,
     name:           'Spaghetti',
-    actualAmount:   0,
+    actualAmount:   5,
     minimumAmount:  1
     },
     {
@@ -53,6 +61,23 @@ export const inventory: Inventory = ref([
     },
 ])
 
-
+let id = ref(7)
+export const nextId = computed(() => id.value)
 export const getInventoryList = computed(() => inventory.value);
+export const getInventoryItemById = (id :number) => computed(() => inventory.value.find(inventoryItem => inventoryItem.id === id))
 
+export const addInventoryItem = (item :InventoryItem) =>{
+    inventory.value.push(item)
+    id.value++
+}
+export const editInventoryItem =  (inventoryItem :InventoryItem) => {
+    const inventoryIndex = inventory.value.findIndex(item => item.id === inventoryItem.id)
+    if (inventoryIndex < 0) return console.log('item not found')
+        inventory.value.splice(inventoryIndex, 1, inventoryItem)
+}
+
+export const deleteInventoryItem =  (id :number) => {
+    const inventoryIndex = inventory.value.findIndex(item => item.id === id)
+    if (inventoryIndex < 0) return console.log('item not found')
+        inventory.value.splice(inventoryIndex, 1,)
+}

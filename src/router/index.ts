@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { ineventoryRoutes } from "../domain/inventory/components/routes";
+import { inventoryRoutes } from "../domain/inventory/components/routes";
 
-const routes = [...ineventoryRoutes]
+const routes = [...inventoryRoutes];
 
 export const router = createRouter({
     history: createWebHistory(),
     routes
-})
+});
