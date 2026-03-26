@@ -1,13 +1,15 @@
 <script setup lang="ts">
 // import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { deleteInventoryItem } from './inventory-store';
+import { deleteInventoryItem,  type InventoryItem } from '../inventory-store';
+
+
 
 const router = useRouter()
 
 const props = defineProps({
     inventory: {
-        type:   Array,
+        type:   Array<InventoryItem>,
     }
 })
 
@@ -39,7 +41,7 @@ const remove = deleteInventoryItem
                 <p>{{ item.id }}</p>
                 <td>{{ item.name }}</td>
                 <td>{{ item.minimumAmount }}</td>
-                <td><input type="number"  v-model="item.actualAmount" :id="`${item.id}`"></td><p>{{ item.actualAmount }}</p>
+                <td><input type="number"  v-model="item.actualAmount" :id="`${item.id}`"></td>
                 <td><button @click="router.push(`/edit/${item.id}`)">Edit</button></td>
                 <td><button @click="remove(item.id)">Delete</button></td>
             </tr>

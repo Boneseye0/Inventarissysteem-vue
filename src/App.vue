@@ -7,7 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <RouterLink to = "/">Main</RouterLink> |
     <RouterLink to = "/Create">Toevoegen</RouterLink> |
     <RouterLink to = "/Edit/:id">Edit</RouterLink> |
-    <RouterLink to = "/ShortageList">Bestel Lijst</RouterLink> |
+    <RouterLink to = "/OrderList">Bestel Lijst</RouterLink> |
   </nav>
   <div>
     <RouterView/>

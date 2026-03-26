@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import { useRoute } from 'vue-router';
-import { editInventoryItem, getInventoryItemById, type InventoryItem } from '../components/inventory-store';
+import { editInventoryItem, getInventoryItemById, type InventoryItem } from '../inventory-store';
 import InventoryForm from '../components/InventoryForm.vue';
 
 
@@ -17,8 +17,8 @@ const handleSubmit = (editedInventoryItem :InventoryItem) => {
 
 <template>
 <div>
-    <h2>{{ inventoryItem?.name }}, id:   {{ inventoryItem?.id }}</h2>
-    <InventoryForm @submit="handleSubmit" :inventoryItem="inventoryItem" />
+    <h2>{{ inventoryItem?.name }}</h2>
+    <InventoryForm v-if="inventoryItem" @submit="handleSubmit" :inventoryItem />
 </div>
 
 </template>

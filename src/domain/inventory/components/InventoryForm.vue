@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { InventoryItem } from './inventory-store';
+import type { InventoryItem } from '../inventory-store';
 import { useRouter } from 'vue-router';
 
 const router = useRouter()
@@ -38,8 +38,11 @@ const cancel = () => {
                     </td>
                     <td>
                         Huidige vooraad
-                    </td>                    
-                </tr>                
+                    </td>
+                    <td>
+                        Gewenste vooraad na bestelling
+                    </td>
+                </tr>
             </thead>
             <tbody>
                 <tr>
@@ -52,27 +55,12 @@ const cancel = () => {
                     <td>
                         <input type="number" v-model="newInventoryItem.actualAmount">
                     </td>
+                    <td>
+                        <input type="number" v-model="newInventoryItem.orderToMinimum" placeholder="10">
+                    </td>
                 </tr>
             </tbody>
             <tfoot>
-                <tr>
-                    <td>{{ newInventoryItem.name }}</td>
-                </tr>
-                <tr>
-                    <td>
-                        {{ newInventoryItem.minimumAmount }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        {{ newInventoryItem.actualAmount }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        {{ newInventoryItem.id }}
-                    </td>
-                </tr>
                 <tr>
                     <td>
                         <button @click="cancel">Annuleren</button>

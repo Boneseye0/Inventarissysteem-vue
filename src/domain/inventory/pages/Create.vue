@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { InventoryItem } from '../components/inventory-store'
-import { addInventoryItem, nextId } from '../components/inventory-store';
+import type { InventoryItem } from '../inventory-store'
+import { addInventoryItem, nextId } from '../inventory-store';
 import InventoryForm from '../components/InventoryForm.vue';
 
 const inventoryItem = ref({
